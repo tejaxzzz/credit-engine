@@ -4,8 +4,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-// Sample in-memory database
-let credits = {};
+
 
 // API: Enroll user
 app.post('/api/enroll', (req, res) => {
@@ -23,6 +22,9 @@ app.get('/api/credits/:userId', (req, res) => {
 
   if (!credit) return res.status(404).json({ error: 'User not found' });
   res.status(200).json(credit);
+});
+app.get('/', (req, res) => {
+  res.send('🎉 Welcome to the Credit Engine API by Tejas!');
 });
 
 app.listen(PORT, () => {
